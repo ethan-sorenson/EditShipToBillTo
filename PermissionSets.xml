@@ -1,0 +1,27 @@
+<PermissionSets>
+
+   <PermissionSet RoleID="SHIP" RoleName="ShippingAddress">
+
+       <Permission>
+
+           <ObjectType>Page</ObjectType>
+
+           <ObjectID>50115</ObjectID>
+
+           <ReadPermission>Yes</ReadPermission>
+
+           <InsertPermission>Yes</InsertPermission>
+
+           <ModifyPermission>Yes</ModifyPermission>
+
+           <DeletePermission>Yes</DeletePermission>
+
+           <ExecutePermission>Yes</ExecutePermission>
+
+           <SecurityFilter />
+
+       </Permission>
+
+   </PermissionSet>
+
+</PermissionSets>
