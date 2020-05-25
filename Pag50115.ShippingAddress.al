@@ -9,7 +9,7 @@ page 50115 "Address Web Service"
     EntitySetName = 'AddressWebService';
     SourceTable = "Sales Header";
     DelayedInsert = true;
-    ODataKeyFields = ID;
+    ODataKeyFields = SystemId;
 
     layout
     {
@@ -29,18 +29,16 @@ page 50115 "Address Web Service"
                     Caption = 'ShipToOptions';
                     trigger OnValidate();
                     begin
-                        CASE ShipToOptions OF
-                            ShipToOptions::"Default (Sell-to Address)":
-                                BEGIN
-                                    CopySellToAddressToShipToAddress;
-                                END;
-                            ShipToOptions::"Alternate Shipping Address":
-                                BEGIN
-                                END;
-                            ShipToOptions::"Custom Address":
-                                BEGIN
-                                    VALIDATE("Ship-to Code", '');
-                                END;
+                        case ShipToOptions of
+                            'Default':
+                                CopySellToAddressToShipToAddress;
+                            'Alternate':
+                                begin
+                                end;
+                            'Custom':
+                                VALIDATE("Ship-to Code", '');
+                            else
+                                Error('Error: ShipToOptions - The available options are Default, Alternate, or Custom');
                         END;
                     End;
 
@@ -105,12 +103,8 @@ page 50115 "Address Web Service"
                     Caption = 'BillToOptions';
                     trigger OnValidate();
                     begin
-                        CASE BillToOptions OF
-                            BillToOptions::"Default (Customer)":
-                                BEGIN
-                                    CopySellToAddressToBillToAddress;
-                                END;
-                        END;
+                        if BillToOptions = 'Customer' then
+                            CopySellToAddressToBillToAddress;
                     END;
                 }
                 field(BillToName; "Bill-to Name")
@@ -181,22 +175,12 @@ page 50115 "Address Web Service"
             }
         }
     }
-    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
-    begin
-        Insert(true);
-        Modify(true);
-        exit(false);
-    end;
-
-    trigger OnDeleteRecord(): Boolean
-    begin
-        Delete(true)
-    end;
 
     var
-        ShipToOptions: Option "Default (Sell-to Address)","Alternate Shipping Address","Custom Address";
-        BillToOptions: Option "Default (Customer)","Another Customer","Custom Address";
+        ShipToOptions: Text;
+        BillToOptions: Text;
         ApplicationAreaMgmtFacade: codeunit "Application Area Mgmt. Facade";
         SalesCalcDiscountByType: codeunit "Sales - Calc Discount By Type";
         Orders: Page 42;
+        attachments: page 2121;
 }
