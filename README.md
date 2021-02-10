@@ -13,6 +13,9 @@ When you change the address in Business Central, you first need to switch the fl
 2. The [Pag50115.ShippingAddress.al](Pag50115.ShippingAddress.al) file can be modified as needed to use additional logic.
 3. After publishing the page you will still want to use the standard Sales Transaction pages to create the Orders/Invoices/Credit Memos before using this page to modify the addresses.
 
+PATCH /ODataV4/Company('Sample')/ShippingAddress({id})
+A Sample Request body can be viewed in the [SampleRequest.json](SampleRequest.json) file.
+
 ### Troubleshooting
 **Web Service isn't available after publishing**
 * Make sure the service is published as outlined [here](https://docs.microsoft.com/en-us/dynamics365/business-central/across-how-publish-web-service "documentation").

@@ -1,0 +1,18 @@
+{
+    "ShipToOptions": "Custom",
+    "ShipToName": "Tower Manufacturing",
+    "ShipToAddress": "200 2nd St S",
+    "ShipToAddress2": "Suite 2",
+    "ShipToCity": "Fargo",
+    "ShipToCounty": "ND",
+    "ShipToPostCode": "58104",
+    "ShipToCountryRegionCode": "US",
+    "BillToOptions": "Custom",
+    "BillToName": "Tower Manufacturing",
+    "BillToAddress": "200 2nd St S",
+    "BillToAddress2": "Suite 2",
+    "BillToCity": "Fargo",
+    "BillToCounty": "ND",
+    "BillToPostCode": "58104",
+    "BillToCountryRegionCode": "US"
+}
