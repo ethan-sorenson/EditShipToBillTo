@@ -17,10 +17,22 @@ page 50115 "Address Web Service"
         {
             group(Settings)
             {
-                field(No; "No.")
+                field(No; Rec."No.")
                 {
                     ApplicationArea = All;
                     Caption = 'No';
+
+                }
+                field(SystemId; Rec."SystemId")
+                {
+                    ApplicationArea = All;
+                    Caption = 'SystemId';
+
+                }
+                field("ExternalDocumentNo"; Rec."External Document No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'External Document No.';
 
                 }
                 field(ShipToOptions; ShipToOptions)
@@ -31,67 +43,67 @@ page 50115 "Address Web Service"
                     begin
                         case ShipToOptions of
                             'Default':
-                                CopySellToAddressToShipToAddress;
+                                Rec.CopySellToAddressToShipToAddress;
                             'Alternate':
                                 begin
                                 end;
                             'Custom':
-                                VALIDATE("Ship-to Code", '');
+                                Rec.VALIDATE("Ship-to Code", '');
                             else
                                 Error('Error: ShipToOptions - The available options are Default, Alternate, or Custom');
                         END;
                     End;
 
                 }
-                field(ShipToCode; "Ship-to Code")
+                field(ShipToCode; Rec."Ship-to Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to Code';
 
                 }
-                field(ShipToName; "Ship-to Name")
+                field(ShipToName; Rec."Ship-to Name")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to Name';
 
                 }
-                field(ShipToAddress; "Ship-to Address")
+                field(ShipToAddress; Rec."Ship-to Address")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to Address';
 
                 }
-                field(ShipToAddress2; "Ship-to Address 2")
+                field(ShipToAddress2; Rec."Ship-to Address 2")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to Address 2';
 
                 }
-                field(ShipToCity; "Ship-to City")
+                field(ShipToCity; Rec."Ship-to City")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to City';
 
                 }
-                field(ShipToCounty; "Ship-to County")
+                field(ShipToCounty; Rec."Ship-to County")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to County';
 
                 }
-                field(ShipToPostCode; "Ship-to Post Code")
+                field(ShipToPostCode; Rec."Ship-to Post Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to Post Code';
 
                 }
-                field(ShipToCountryRegionCode; "Ship-to Country/Region Code")
+                field(ShipToCountryRegionCode; Rec."Ship-to Country/Region Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to Country/Region Code';
 
                 }
-                field(ShipToContact; "Ship-to Contact")
+                field(ShipToContact; Rec."Ship-to Contact")
                 {
                     ApplicationArea = All;
                     Caption = 'Ship-to Contact';
@@ -104,18 +116,18 @@ page 50115 "Address Web Service"
                     trigger OnValidate();
                     begin
                         if BillToOptions = 'Customer' then
-                            CopySellToAddressToBillToAddress;
+                            Rec.CopySellToAddressToBillToAddress;
                     END;
                 }
-                field(BillToName; "Bill-to Name")
+                field(BillToName; Rec."Bill-to Name")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to Name';
                     trigger OnValidate();
                     Begin
-                        IF GETFILTER("Bill-to Customer No.") = xRec."Bill-to Customer No." THEN
-                            IF "Bill-to Customer No." <> xRec."Bill-to Customer No." THEN
-                                SETRANGE("Bill-to Customer No.");
+                        IF Rec.GETFILTER("Bill-to Customer No.") = xRec."Bill-to Customer No." THEN
+                            IF Rec."Bill-to Customer No." <> xRec."Bill-to Customer No." THEN
+                                Rec.SETRANGE("Bill-to Customer No.");
 
                         IF ApplicationAreaMgmtFacade.IsFoundationEnabled THEN
                             SalesCalcDiscountByType.ApplyDefaultInvoiceDiscount(0, Rec);
@@ -124,49 +136,49 @@ page 50115 "Address Web Service"
                     End;
 
                 }
-                field(BillToAddress; "Bill-to Address")
+                field(BillToAddress; Rec."Bill-to Address")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to Address';
 
                 }
-                field(BillToAddress2; "Bill-to Address 2")
+                field(BillToAddress2; Rec."Bill-to Address 2")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to Address 2';
 
                 }
-                field(BillToCity; "Bill-to City")
+                field(BillToCity; Rec."Bill-to City")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to City';
 
                 }
-                field(BillToCounty; "Bill-to County")
+                field(BillToCounty; Rec."Bill-to County")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to County';
 
                 }
-                field(BillToPostCode; "Bill-to Post Code")
+                field(BillToPostCode; Rec."Bill-to Post Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to Post Code';
 
                 }
-                field(BillToCountryRegionCode; "Bill-to Country/Region Code")
+                field(BillToCountryRegionCode; Rec."Bill-to Country/Region Code")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to Country/Region Code';
 
                 }
-                field(BillToContactNo; "Bill-to Contact No.")
+                field(BillToContactNo; Rec."Bill-to Contact No.")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to Contact No.';
 
                 }
-                field(BillToContact; "Bill-to Contact")
+                field(BillToContact; Rec."Bill-to Contact")
                 {
                     ApplicationArea = All;
                     Caption = 'Bill-to Contact';
@@ -181,6 +193,4 @@ page 50115 "Address Web Service"
         BillToOptions: Text;
         ApplicationAreaMgmtFacade: codeunit "Application Area Mgmt. Facade";
         SalesCalcDiscountByType: codeunit "Sales - Calc Discount By Type";
-        Orders: Page 42;
-        attachments: page 2121;
 }
