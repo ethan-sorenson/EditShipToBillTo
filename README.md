@@ -29,5 +29,6 @@ A Sample Request body can be viewed in the [SampleRequest.json](SampleRequest.js
 * 1.0.0.5 first release on BC v14
 * 1.0.0.6 updated for BC v16, removed duplicate insert triggers
 * 1.0.0.7 updated runtime to 7, switched to AL Permission Sets, and added External Document No
+* 1.0.0.8 Added Your Reference
 
 Enjoy!

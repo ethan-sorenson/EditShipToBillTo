@@ -21,18 +21,21 @@ page 50115 "Address Web Service"
                 {
                     ApplicationArea = All;
                     Caption = 'No';
-
                 }
                 field(SystemId; Rec."SystemId")
                 {
                     ApplicationArea = All;
                     Caption = 'SystemId';
-
                 }
                 field("ExternalDocumentNo"; Rec."External Document No.")
                 {
                     ApplicationArea = All;
                     Caption = 'External Document No.';
+                }
+                field(YourReference; Rec."Your Reference")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Your Reference';
 
                 }
                 field(ShipToOptions; ShipToOptions)
