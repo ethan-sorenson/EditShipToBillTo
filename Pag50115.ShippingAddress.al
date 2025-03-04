@@ -21,21 +21,30 @@ page 50115 "Address Web Service"
                 {
                     ApplicationArea = All;
                     Caption = 'No';
+
                 }
-                field(SystemId; Rec."SystemId")
+                field(DocumentType; Rec."Document Type")
                 {
                     ApplicationArea = All;
-                    Caption = 'SystemId';
-                }
-                field("ExternalDocumentNo"; Rec."External Document No.")
-                {
-                    ApplicationArea = All;
-                    Caption = 'External Document No.';
+                    Caption = 'Document Type';
+
                 }
                 field(YourReference; Rec."Your Reference")
                 {
                     ApplicationArea = All;
                     Caption = 'Your Reference';
+
+                }
+                field(SystemId; Rec."SystemId")
+                {
+                    ApplicationArea = All;
+                    Caption = 'SystemId';
+
+                }
+                field("ExternalDocumentNo"; Rec."External Document No.")
+                {
+                    ApplicationArea = All;
+                    Caption = 'External Document No.';
 
                 }
                 field(ShipToOptions; ShipToOptions)
@@ -122,23 +131,6 @@ page 50115 "Address Web Service"
                             Rec.CopySellToAddressToBillToAddress;
                     END;
                 }
-                field(BillToName; Rec."Bill-to Name")
-                {
-                    ApplicationArea = All;
-                    Caption = 'Bill-to Name';
-                    trigger OnValidate();
-                    Begin
-                        IF Rec.GETFILTER("Bill-to Customer No.") = xRec."Bill-to Customer No." THEN
-                            IF Rec."Bill-to Customer No." <> xRec."Bill-to Customer No." THEN
-                                Rec.SETRANGE("Bill-to Customer No.");
-
-                        IF ApplicationAreaMgmtFacade.IsFoundationEnabled THEN
-                            SalesCalcDiscountByType.ApplyDefaultInvoiceDiscount(0, Rec);
-
-                        CurrPage.UPDATE;
-                    End;
-
-                }
                 field(BillToAddress; Rec."Bill-to Address")
                 {
                     ApplicationArea = All;
@@ -194,6 +186,4 @@ page 50115 "Address Web Service"
     var
         ShipToOptions: Text;
         BillToOptions: Text;
-        ApplicationAreaMgmtFacade: codeunit "Application Area Mgmt. Facade";
-        SalesCalcDiscountByType: codeunit "Sales - Calc Discount By Type";
 }

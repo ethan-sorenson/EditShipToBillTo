@@ -9,7 +9,7 @@ When you change the address in Business Central, you first need to switch the fl
 ![increment](https://i.imgur.com/1o7TBTy.gif)
 
 ### Getting Started
-1. If you aren't familar with building AL extensions you can use the Microsoft [documentation](https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-dev-overview "documentation") to get started.
+1. If you aren't familiar with building AL extensions you can use the Microsoft [documentation](https://docs.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-dev-overview "documentation") to get started.
 2. The [Pag50115.ShippingAddress.al](Pag50115.ShippingAddress.al) file can be modified as needed to use additional logic.
 3. After publishing the page you will still want to use the standard Sales Transaction pages to create the Orders/Invoices/Credit Memos before using this page to modify the addresses.
 
@@ -22,13 +22,14 @@ A Sample Request body can be viewed in the [SampleRequest.json](SampleRequest.js
 * Make sure the service is named as expected ex. /ODataV4/Company('Sample')/ShippingAddress
 
 **Something else isn't working properly**
-* Use github's issue reporter on the right
+* Use GitHub's issue reporter on the right
 * Send me an email ethan.sorenson@eonesolutions.com (might take a few days)
 
 ### Updates
 * 1.0.0.5 first release on BC v14
 * 1.0.0.6 updated for BC v16, removed duplicate insert triggers
 * 1.0.0.7 updated runtime to 7, switched to AL Permission Sets, and added External Document No
-* 1.0.0.8 Added Your Reference
-
+* 1.0.0.8 Added Your Reference and Document Type fields
+* 1.0.0.9 Removed Bill-to Name as it is not an editable field
+* 
 Enjoy!

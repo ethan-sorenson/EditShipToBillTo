@@ -1,0 +1,11 @@
+# Binary files
+.alpackages/
+.alcache/
+
+# Temp files
+.vs/
+
+# Others
+~$*
+*~
+.vscode/rad.json
